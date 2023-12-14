@@ -17,10 +17,6 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,13 +40,13 @@
             <version>4.0.2</version>
             <scope>compile</scope>
         </dependency>
-		<dependency>
-			<groupId>ch.bbw</groupId>
-			<artifactId>service-katalog</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>ch.bbw</groupId>
+            <artifactId>service-katalog</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

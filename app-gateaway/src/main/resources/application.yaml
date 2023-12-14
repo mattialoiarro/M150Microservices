@@ -1,16 +1,12 @@
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       routes:
         - id: service-01
-          uri: http://localhost:8081/api
+          uri: lb://service-01
           predicates:
-            - Path=/first/**
+            - Path=/shirts/**
         - id: service-02
-          uri: http://localhost:8082/api
+          uri: lb://service-02
           predicates:
             - Path=/second/**
