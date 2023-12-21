@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: service-01
+          uri: lb://service-01
+          predicates:
+            - Path=/shirts/**
+        - id: service-02
+          uri: lb://service-02
+          predicates:
+            - Path=/second/**
