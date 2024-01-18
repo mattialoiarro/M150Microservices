@@ -5,7 +5,7 @@ spring:
         - id: service-01
           uri: lb://service-01
           predicates:
-            - Path=/shirts/**
+            - Path=/service-01/**
         - id: service-02
           uri: lb://service-02
           predicates:
