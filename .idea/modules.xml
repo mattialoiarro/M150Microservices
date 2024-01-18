@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/M150Microservices.iml" filepath="$PROJECT_DIR$/.idea/M150Microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-gateaway/app-gateaway.iml" filepath="$PROJECT_DIR$/app-gateaway/app-gateaway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server-app/eureka-server-app.iml" filepath="$PROJECT_DIR$/eureka-server-app/eureka-server-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-basket/service-basket.iml" filepath="$PROJECT_DIR$/service-basket/service-basket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-katalog/service-katalog.iml" filepath="$PROJECT_DIR$/service-katalog/service-katalog.iml" />
     </modules>
   </component>
 </project>
