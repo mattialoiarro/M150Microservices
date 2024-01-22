@@ -1,97 +1,59 @@
 package ch.bbw.service01;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
-import org.hibernate.Hibernate;
-
-import java.util.Objects;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
+@Table(name = "Shirt")  // Ensure this matches your table name in the database
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
-@RequiredArgsConstructor
 public class Shirt {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "brand")
     private String brand;
+
+    @Column(name = "squad")
     private String squad;
+
+    @Column(name = "year")
     private int year;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "size")
     private String size;
+
+    @Column(name = "details")
     private String details;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
+    public Shirt(String brand, String squad, int year, double price, String size, String details) {
         this.brand = brand;
-    }
-
-    public String getSquad() {
-        return squad;
-    }
-
-    public void setSquad(String squad) {
         this.squad = squad;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
         this.year = year;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
         this.size = size;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
         this.details = details;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Shirt shirt = (Shirt) o;
-        return id != null && Objects.equals(id, shirt.id);
-    }
+    // If you need to define any business logic or non-standard behavior,
+    // you can add methods here.
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
+    // The Lombok annotations will automatically generate standard setters,
+    // getters, and other utility methods.
 }
