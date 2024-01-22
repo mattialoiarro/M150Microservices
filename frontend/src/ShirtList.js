@@ -5,16 +5,22 @@ const ShirtList = ({ addToCart }) => {
   const [shirts, setShirts] = useState([]);
 
   useEffect(() => {
-    // Fetch data from API
-    fetch("/service-01/api/shirts") // Update the URL
-      .then((response) => response.json())
-      .then((data) => {
-        setShirts(data); // Update state
-      })
-      .catch((error) => {
-        console.error("Error fetching data from the backend:", error);
-      });
-  }, []);
+    fetch("http://localhost:8081/shirts")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            setShirts(data);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+            // Handle the error (e.g., set an error state, display a message)
+        });
+}, []);
+
 
   
   return (
