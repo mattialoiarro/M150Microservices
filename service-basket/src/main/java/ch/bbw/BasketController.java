@@ -32,6 +32,12 @@ public class BasketController {
         return cart;
     }
 
+    @DeleteMapping("/clear")
+    public Cart clearCart() {
+        cart.clearCart();
+        return cart;
+    }
+
     @GetMapping
     public Cart getCart() {
         return cart;

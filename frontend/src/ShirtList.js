@@ -6,23 +6,11 @@ const ShirtList = ({ addToCart }) => {
 
   useEffect(() => {
     fetch("http://localhost:8081/shirts")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then((data) => {
-            setShirts(data);
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-            // Handle the error (e.g., set an error state, display a message)
-        });
-}, []);
+      .then((response) => response.json())
+      .then((data) => setShirts(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
-
-  
   return (
     <div>
       <h1>Available Shirts</h1>
