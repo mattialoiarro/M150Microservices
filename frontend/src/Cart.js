@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Checkout from './Checkout';
 
 const Cart = ({ cartItems }) => {
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = () => {
+    setIsCheckingOut(true);
+  };
+
+  const handleCheckoutComplete = () => {
+    setIsCheckingOut(false);
+    // Further actions after checkout (e.g., clear cart)
+  };
+
   const calculateTotal = (cartItems) => {
     return cartItems.reduce((total, item) => total + item.price, 0);
   };
+
+  if (isCheckingOut) {
+    return <Checkout cartItems={cartItems} onCheckoutComplete={handleCheckoutComplete} />;
+  }
 
   return (
     <div className="cart">
@@ -16,7 +32,7 @@ const Cart = ({ cartItems }) => {
         ))}
       </ul>
       <h3>Total: ${calculateTotal(cartItems).toFixed(2)}</h3>
-      <button>Checkout</button>
+      <button onClick={handleCheckout}>Checkout</button>
     </div>
   );
 };
