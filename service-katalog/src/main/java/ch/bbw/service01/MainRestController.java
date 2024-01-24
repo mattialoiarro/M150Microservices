@@ -71,12 +71,14 @@ public class MainRestController {
     public ResponseEntity<String> addTestData() {
         try {
             // Create and persist test data
-            Shirt shirt1 = new Shirt("Adidas", "Home", 2020, 49.99, "M", "Red shirt with white stripes");
-            Shirt shirt2 = new Shirt("Nike", "Away", 2021, 59.99, "L", "Blue shirt with logo");
+            Shirt shirt1 = new Shirt("Juventus Turin", "Home", 2022, 69.99, "M", "white shirt with black stripes");
+            Shirt shirt2 = new Shirt("AS Roma", "Home", 2022, 85.99, "L", "Red shirt with yellow letters");
+            Shirt shirt3 = new Shirt("AC Milan", "Home", 2023, 9.99, "XXXL", "Red shirt with black letters");
             // Add more test data as needed
 
             entityManager.persist(shirt1);
             entityManager.persist(shirt2);
+            entityManager.persist(shirt3);
             // Persist more test data as needed
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Test data added successfully");
