@@ -1,24 +1,27 @@
 package ch.bbw;
 
-import ch.bbw.service01.Shirt;
-import ch.bbw.service01.KatalogClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/cart")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BasketController {
     private final Cart cart = new Cart();
 
-    @Autowired
-    private KatalogClient katalogClient;
+    private ShirtClient shirtClient;
+
+    public BasketController(ShirtClient shirtClient) {
+        this.shirtClient = shirtClient;
+    }
 
     @PostMapping
     public Cart addItemToCart(@RequestBody CartItem item) {
-        Shirt shirt = katalogClient.getShirtById(item.getProductId());
-        if (shirt != null && shirt.getId() == (item.getProductId())) {
-            // Logik zur Überprüfung und Aktualisierung der Artikelmenge
-            cart.addItem(item);
+        try {
+            Shirt shirt = shirtClient.getShirtById(item.getProductId());
+            if (shirt != null && shirt.getId().equals(item.getProductId())) {
+                cart.addItem(item);
+            }
+        } catch (Exception e) {
         }
         return cart;
     }
@@ -26,6 +29,12 @@ public class BasketController {
     @DeleteMapping("/{productId}")
     public Cart removeItemFromCart(@PathVariable int productId) {
         cart.removeItem(productId);
+        return cart;
+    }
+
+    @DeleteMapping("/clear")
+    public Cart clearCart() {
+        cart.clearCart();
         return cart;
     }
 

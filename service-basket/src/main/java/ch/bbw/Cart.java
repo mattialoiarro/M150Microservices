@@ -19,8 +19,11 @@ public class Cart {
         items.remove(productId);
     }
 
+    public void clearCart() {
+        items.clear();
+    }
+
     public Map<Integer, CartItem> getItems() {
         return new HashMap<>(items);
     }
-
 }

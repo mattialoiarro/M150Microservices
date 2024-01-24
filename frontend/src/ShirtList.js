@@ -1,49 +1,33 @@
 import React, { useState, useEffect } from "react";
 import ShirtItem from "./ShirtItem.js";
 
+import shirt1 from "./juve.jpeg";
+import shirt2 from "./roma.jpeg";
+import shirt3 from "./acmilan.jpeg";
+
 const ShirtList = ({ addToCart }) => {
   const [shirts, setShirts] = useState([]);
 
   useEffect(() => {
-    // Replace with API-call
-    const shirtsData = [
-      {
-        id: 1,
-        brand: "Brand 1",
-        squad: "Squad 1",
-        year: 2022,
-        price: 10.99,
-        size: "M",
-        details: "Details 1",
-      },
-      {
-        id: 2,
-        brand: "Brand 2",
-        squad: "Squad 2",
-        year: 2023,
-        price: 15.99,
-        size: "L",
-        details: "Details 2",
-      },
-      {
-        id: 3,
-        brand: "Brand 3",
-        squad: "Squad 3",
-        year: 2021,
-        price: 12.49,
-        size: "S",
-        details: "Details 3",
-      },
-    ];
-    setShirts(shirtsData);
+    fetch("http://localhost:8081/shirts")
+      .then((response) => response.json())
+      .then((data) => setShirts(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  const shirtImages = [shirt1, shirt2, shirt3];
 
   return (
     <div>
       <h1>Available Shirts</h1>
       <div className="shirt-list">
-        {shirts.map((shirt) => (
-          <ShirtItem key={shirt.id} shirt={shirt} addToCart={addToCart} />
+        {shirts.map((shirt, index) => (
+          <ShirtItem
+            key={shirt.id}
+            shirt={shirt}
+            addToCart={addToCart}
+            imageUrl={shirtImages[index]}
+          />
         ))}
       </div>
     </div>

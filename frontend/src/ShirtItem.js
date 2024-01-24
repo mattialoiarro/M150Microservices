@@ -1,7 +1,7 @@
 import React from "react";
 import "./ShirtItem.css";
 
-const ShirtItem = ({ shirt, addToCart }) => {
+const ShirtItem = ({ shirt, addToCart, imageUrl }) => {
   const handleAddToCart = () => {
     addToCart(shirt);
   };
@@ -9,7 +9,7 @@ const ShirtItem = ({ shirt, addToCart }) => {
   return (
     <div className="shirt-item">
       <div className="image">
-        <img src={shirt.imageUrl} alt={shirt.name} />
+        <img src={imageUrl} alt={shirt.name} />
       </div>
       <div className="details">
         <h2>{shirt.brand}</h2>
